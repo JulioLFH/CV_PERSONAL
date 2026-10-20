@@ -37,7 +37,10 @@
   h1 { font-family: var(--titulo); font-size: clamp(1.6rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0; text-wrap: balance; }
   .cargo { color: var(--acento); font-weight: 700; font-size: 1.1rem; margin-top: 6px; }
   .lema { color: var(--suave); font-size: .95rem; margin-top: 2px; }
-  .descarga { display: inline-block; margin-top: 12px; padding: 7px 14px; border-radius: 6px; background: var(--acento);
+  .pie-descarga { display: flex; justify-content: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--borde); }
+  .contacto a { color: var(--acento); text-decoration: none; }
+  .contacto a:hover { text-decoration: underline; }
+  .descarga { display: inline-block; padding: 10px 22px; border-radius: 6px; background: var(--acento);
               color: var(--hoja); font-weight: 600; font-size: .9rem; text-decoration: none; }
   .descarga:hover, .descarga:focus-visible { filter: brightness(1.1); outline: 2px solid var(--acento); outline-offset: 2px; }
   .contacto { grid-area: contacto; list-style: none; margin: 0; padding: 0; min-width: 0;
@@ -99,7 +102,7 @@
     body { padding: 0; font-size: 9.5pt; line-height: 1.45; }
     .hoja { border: 0; max-width: none; border-radius: 0; }
     .cabecera { padding: 0 0 12px; row-gap: 10px; }
-    .descarga { display: none; }
+    .pie-descarga { display: none; }
     .contacto { font-size: 9pt; gap: 4px 20px; }
     .foto { width: 27mm; }
     h1 { font-size: 21pt; }
@@ -131,14 +134,13 @@
       <h1>Julio Christian Flores Herrera</h1>
       <div class="cargo">Analista de Datos · Business Intelligence</div>
       <div class="lema">Bachiller en Ingeniería de Sistemas · UNTELS</div>
-      <a class="descarga" href="CV_Julio_Flores_Herrera_Word.pdf" download="CV_Julio_Flores_Herrera.pdf">Descargar CV en PDF</a>
     </div>
     <img class="foto" src="foto.jpg" alt="Foto de Julio Christian Flores Herrera">
     <ul class="contacto">
       <li><span class="etq">Correo</span>juliochroli@gmail.com</li>
       <li><span class="etq">Celular</span>+51 928 248 648</li>
       <li><span class="etq">Ubicación</span>Villa El Salvador, Lima</li>
-      <li><span class="etq">GitHub</span>github.com/JulioLFH</li>
+      <li><span class="etq">CV web</span><a href="https://juliolfh.github.io/CV_PERSONAL/">juliolfh.github.io/CV_PERSONAL</a></li>
     </ul>
   </header>
 
@@ -301,6 +303,10 @@
         <a href="certificados/asterisk.jpg" target="_blank" rel="noopener"><img src="certificados/asterisk.jpg" alt="Certificado Centrales Telefónicas IP con Asterisk">Asterisk · SGDS Perú</a>
       </div>
     </section>
+
+    <div class="pie-descarga">
+      <a class="descarga" href="CV_Julio_Flores_Herrera_Word.pdf" download="CV_Julio_Flores_Herrera.pdf">Descargar CV en PDF</a>
+    </div>
   </div>
 </article>
 <script>

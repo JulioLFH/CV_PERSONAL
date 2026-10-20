@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CV Julio Flores Herrera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  /* Hoja de CV centrada: cabecera con datos, cuerpo en una columna, anexos de certificados al final */
+  :root {
+    --fondo: #eef1f4; --hoja: #ffffff; --texto: #1c232b; --suave: #5a6672; --borde: #dbe1e7;
+    --acento: #1d4e89; --acento-suave: #e8eff8;
+    --titulo: "Source Serif 4", Georgia, serif;
+    --cuerpo: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --fondo: #0f1419; --hoja: #171d24; --texto: #e4e9ee; --suave: #9aa6b2; --borde: #2a333d;
+      --acento: #7fb0ec; --acento-suave: #1d2a3a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --fondo: #0f1419; --hoja: #171d24; --texto: #e4e9ee; --suave: #9aa6b2; --borde: #2a333d;
+    --acento: #7fb0ec; --acento-suave: #1d2a3a; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--texto); font: 16px/1.55 var(--cuerpo); padding: 24px 16px; }
+  .hoja { max-width: 880px; margin: 0 auto; background: var(--hoja); border: 1px solid var(--borde); border-radius: 6px; overflow: hidden; }
+  /* Cabecera: identidad y contacto a la izquierda, foto fija en la esquina superior derecha */
+  .cabecera { padding: 36px 44px 28px; border-bottom: 3px solid var(--acento);
+              display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "identidad foto" "contacto foto";
+              column-gap: 32px; row-gap: 18px; align-items: start; }
+  .identidad { grid-area: identidad; min-width: 0; }
+  .foto { grid-area: foto; justify-self: end; width: 128px; max-width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
+          border-radius: 4px; border: 1px solid var(--borde); display: block; }
+  h1 { font-family: var(--titulo); font-size: clamp(1.6rem, 4.5vw, 2.3rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+  .cargo { color: var(--acento); font-weight: 700; font-size: 1.1rem; margin-top: 6px; }
+  .lema { color: var(--suave); font-size: .95rem; margin-top: 2px; }
+  .descarga { display: inline-block; margin-top: 12px; padding: 7px 14px; border-radius: 6px; background: var(--acento);
+              color: var(--hoja); font-weight: 600; font-size: .9rem; text-decoration: none; }
+  .descarga:hover, .descarga:focus-visible { filter: brightness(1.1); outline: 2px solid var(--acento); outline-offset: 2px; }
+  .contacto { grid-area: contacto; list-style: none; margin: 0; padding: 0; min-width: 0;
+              display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; font-size: .93rem; }
+  .contacto li { margin: 0; overflow-wrap: anywhere; }
+  .etq { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); }
+  .contenido { padding: 8px 44px 40px; }
+  h2 { font-family: var(--cuerpo); font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+       color: var(--acento); margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--borde); }
+  p { margin: 0; max-width: 75ch; }
+  .item { display: grid; gap: 2px; margin-bottom: 18px; }
+  .fila { display: flex; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; align-items: baseline; }
+  h3 { font-size: 1.02rem; margin: 0; font-weight: 700; }
+  .fecha { color: var(--suave); font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .lugar { color: var(--suave); font-size: .93rem; }
+  ul { margin: 6px 0 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  .lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .lista li { display: flex; justify-content: space-between; gap: 2px 16px; flex-wrap: wrap; margin: 0; }
+  .lista span { color: var(--suave); font-size: .92rem; font-variant-numeric: tabular-nums; }
+  .habilidades { display: grid; grid-template-columns: max-content 1fr; gap: 6px 18px; margin: 0; }
+  .habilidades dt { font-weight: 700; }
+  .habilidades dd { margin: 0; color: var(--texto); }
+  .desplegables { display: grid; gap: 8px; }
+  details { border: 1px solid var(--borde); border-radius: 6px; background: var(--hoja); }
+  details[open] { background: var(--acento-suave); }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 2px 16px; flex-wrap: wrap;
+            align-items: baseline; padding: 10px 14px 10px 36px; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: ""; position: absolute; left: 15px; top: 17px; width: 7px; height: 7px;
+                    border-right: 2px solid var(--acento); border-bottom: 2px solid var(--acento); transform: rotate(-45deg); transition: transform .15s; }
+  details[open] summary::before { transform: rotate(45deg); top: 14px; }
+  summary:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 6px; }
+  .det { display: grid; gap: 4px; padding: 0 14px 12px 36px; }
+  .det p { font-size: .95rem; color: var(--texto); }
+  .proyectos { display: grid; gap: 12px; margin-top: 10px; }
+  .proyecto { border-left: 2px solid var(--acento); padding-left: 14px; }
+  .proy-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+  h4 { margin: 0; font-size: .98rem; font-weight: 700; color: var(--acento); }
+  .herr { font-size: .8rem; color: var(--suave); background: var(--acento-suave); padding: 1px 8px; border-radius: 99px; }
+  .proyecto ul { margin-top: 4px; }
+  @media (prefers-reduced-motion: reduce) { summary::before { transition: none; } }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .anexos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .anexos a { display: grid; gap: 6px; color: var(--texto); text-decoration: none; font-size: .88rem; }
+  .anexos img { width: 100%; max-width: 100%; aspect-ratio: 1404 / 992; object-fit: cover; border: 1px solid var(--borde); border-radius: 4px; background: #fff; display: block; }
+  .anexos a:hover img, .anexos a:focus-visible img { outline: 2px solid var(--acento); outline-offset: 2px; }
+  @media (max-width: 640px) {
+    .cabecera, .contenido { padding-left: 20px; padding-right: 20px; }
+    .dos { grid-template-columns: 1fr; }
+    .cabecera { grid-template-areas: "identidad foto" "contacto contacto"; column-gap: 16px; padding-top: 24px; }
+    .foto { width: 84px; }
+    .contacto { grid-template-columns: 1fr; }
+    .habilidades { grid-template-columns: 1fr; gap: 0; }
+    .habilidades dd { margin-bottom: 8px; }
+  }
+  @media print {
+    :root { --fondo: #fff; --hoja: #fff; --texto: #000; --suave: #444; --borde: #ccc; --acento: #1d4e89; }
+    body { padding: 0; font-size: 9.5pt; line-height: 1.45; }
+    .hoja { border: 0; max-width: none; border-radius: 0; }
+    .cabecera { padding: 0 0 12px; row-gap: 10px; }
+    .descarga { display: none; }
+    .contacto { font-size: 9pt; gap: 4px 20px; }
+    .foto { width: 27mm; }
+    h1 { font-size: 21pt; }
+    .contenido { padding: 0; }
+    h2 { margin: 14px 0 7px; padding-bottom: 3px; }
+    .item { margin-bottom: 9px; }
+    li { margin-bottom: 1px; }
+    li, .fila, summary, details { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    .desplegables { gap: 5px; }
+    details, details[open] { border: 0; background: none; }
+    summary { padding: 0; }
+    summary::before { display: none; }
+    .det { padding: 1px 0 3px; gap: 1px; }
+    .det p { font-size: 9pt; color: var(--suave); }
+    .proyectos { gap: 6px; margin-top: 5px; }
+    .proyecto { padding-left: 10px; break-inside: avoid; }
+    .herr { font-size: 7.5pt; padding: 0 6px; background: none; border: 1px solid var(--borde); }
+    .anexos-seccion { break-before: page; }
+    .anexos { grid-template-columns: 1fr 1fr; }
+    @page { size: A4; margin: 12mm 14mm; }
+  }
+</style>
+</head>
+<body>
+<article class="hoja">
+  <header class="cabecera">
+    <div class="identidad">
+      <h1>Julio Christian Flores Herrera</h1>
+      <div class="cargo">Analista de Datos · Business Intelligence</div>
+      <div class="lema">Bachiller en Ingeniería de Sistemas · UNTELS</div>
+      <a class="descarga" href="CV_Julio_Flores_Herrera_Word.pdf" download="CV_Julio_Flores_Herrera.pdf">Descargar CV en PDF</a>
+    </div>
+    <img class="foto" src="foto.jpg" alt="Foto de Julio Christian Flores Herrera">
+    <ul class="contacto">
+      <li><span class="etq">Correo</span>juliochroli@gmail.com</li>
+      <li><span class="etq">Celular</span>+51 928 248 648</li>
+      <li><span class="etq">Ubicación</span>Villa El Salvador, Lima</li>
+      <li><span class="etq">GitHub</span>github.com/JulioLFH</li>
+    </ul>
+  </header>
+
+  <div class="contenido">
+    <h2>Perfil profesional</h2>
+    <p>
+      Analista de Datos orientado a Business Intelligence, con experiencia en Power BI, SQL Server, Python, ETL y Django.
+      Especializado en integrar múltiples fuentes, automatizar procesos y construir soluciones para análisis y gestión.
+      He desarrollado dashboards para Ventas, Producción, Logística, Contabilidad, Finanzas y Calidad, con foco en
+      optimizar procesos, tener la información disponible a tiempo y apoyar la toma de decisiones.
+    </p>
+
+    <h2>Experiencia profesional</h2>
+    <div class="item">
+      <div class="fila"><h3>Analista de Datos</h3><span class="fecha">mar. 2026 – set. 2026</span></div>
+      <div class="lugar">NEOTOTAL SERVICE S.A.C. (Pauno · Amauta · Neopack)</div>
+      <div class="proyectos">
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Plataforma de Gestión y Visualización de BI</h4><span class="herr">Django · SQL Server</span></div>
+          <ul>
+            <li>Plataforma web interna para administrar reportes, datos, usuarios, respaldos y la distribución de la información.</li>
+            <li>Consolidación de fuentes, dashboards y reportes en una solución centralizada para la gestión y la toma de decisiones.</li>
+          </ul>
+        </div>
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Dashboards Corporativos por Área</h4><span class="herr">Power BI · DAX · Power Query</span></div>
+          <ul>
+            <li>Desarrollo y mantenimiento de más de 15 dashboards para Ventas, Producción, Logística, Contabilidad, Finanzas, Calidad y otras áreas.</li>
+            <li>Diseño de modelos de datos, medidas DAX y transformaciones con Power Query para integrar información de diversas fuentes.</li>
+          </ul>
+        </div>
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Integración y Automatización de Datos (ETL)</h4><span class="herr">Python · SAP HANA B1 · SAP R3 · Odoo · Metrics</span></div>
+          <ul>
+            <li>Procesos ETL que integran SAP HANA Business One, SAP R3, APIs de Odoo, Metrics y otras fuentes.</li>
+            <li>Extracciones incrementales que eliminaron procesos manuales de 3 a 5 horas y llevaron la actualización de la información de 1 a 3 veces al día.</li>
+            <li>Scraping sobre SAP R3 ante la falta de acceso directo, automatizando la obtención de datos para procesos analíticos.</li>
+          </ul>
+        </div>
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Base de Datos Analítica</h4><span class="herr">SQL Server</span></div>
+          <ul>
+            <li>Administración y modelado de bases de datos para almacenamiento, históricos, integración y explotación de la información.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="fila"><h3>Analista Comercial</h3><span class="fecha">ene. 2025 – feb. 2026</span></div>
+      <div class="lugar">PRODUCTORA DE ALIMENTOS UNO S.A.C. (Pauno · Tigo · B&amp;D)</div>
+      <div class="proyectos">
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Dashboards Comerciales de Ventas e Inventarios</h4><span class="herr">Power BI · Excel · SQL</span></div>
+          <ul>
+            <li>Desarrollo y mantenimiento de dashboards interactivos de ventas e inventarios.</li>
+            <li>Administración y modelado de información proveniente de Excel, SQL y otras fuentes.</li>
+          </ul>
+        </div>
+        <div class="proyecto">
+          <div class="proy-cab"><h4>Control de KPIs Comerciales</h4><span class="herr">Power BI · Excel</span></div>
+          <ul>
+            <li>Indicadores y herramientas de control para campañas, promociones y estrategias comerciales.</li>
+            <li>Análisis de resultados y reportes de soporte a la gestión comercial.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h2>Experiencia anterior</h2>
+    <div class="desplegables">
+      <details>
+        <summary><span><b>Analista TI</b> · ALIEX S.A.C. (Walibí · Libby's · Paraíso Tropical)</span><span class="fecha">ene. 2024 – dic. 2024</span></summary>
+        <div class="det">
+          <p><b>Reportes y Automatizaciones:</b> desarrollo y mantenimiento de informes, reportes y automatizaciones según requerimientos.</p>
+          <p><b>Plataformas de Mejora Continua:</b> desarrollo de plataformas internas y participación activa en los proyectos de TI.</p>
+          <p><b>Soporte e Infraestructura TI:</b> soporte a las áreas e instalaciones de TI y seguimiento de solicitudes.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span><b>Practicante de Sistemas</b> · ALIEX S.A.C.</span><span class="fecha">set. 2023 – dic. 2023</span></summary>
+        <div class="det">
+          <p><b>Desarrollo e Informes:</b> programación y elaboración de informes para la dirección.</p>
+          <p><b>Soporte Técnico:</b> mantenimiento de computadoras, apoyo en proyectos y atención a diversas áreas de la empresa.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span><b>Analista de Sistemas</b> · IMFCA Contacto</span><span class="fecha">ene. 2023 – jun. 2023</span></summary>
+        <div class="det">
+          <p><b>Reportes Directivos:</b> elaboración de informes para la dirección y ejecución de proyectos.</p>
+          <p><b>Mejora de Procesos:</b> propuesta e implementación de mejoras y atención rápida de consultas internas.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span><b>Analista de Sistemas</b> · Telesto Development</span><span class="fecha">jul. 2022 – dic. 2022</span></summary>
+        <div class="det">
+          <p><b>Gestión de Bases de Datos:</b> administración de bases de datos y documentación.</p>
+          <p><b>Proyectos de Innovación:</b> cumplimiento de tareas estratégicas y participación en proyectos, con atención al cliente.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span><b>Practicante de Sistemas</b> · Telesto Development</span><span class="fecha">mar. 2022 – jun. 2022</span></summary>
+        <div class="det">
+          <p><b>Desarrollo e Informes:</b> programación y elaboración de informes para la dirección.</p>
+          <p><b>Soporte Técnico:</b> mantenimiento de computadoras y apoyo en proyectos y solicitudes de varias áreas.</p>
+        </div>
+      </details>
+    </div>
+
+    <h2>Formación académica</h2>
+    <div class="item">
+      <div class="fila"><h3>Bachiller en Ingeniería de Sistemas</h3><span class="fecha">2025</span></div>
+      <div class="lugar">Universidad Nacional Tecnológica de Lima Sur (UNTELS)</div>
+    </div>
+    <div class="item">
+      <div class="fila"><h3>Ingeniería de Sistemas (pregrado)</h3><span class="fecha">2019 – 2024</span></div>
+      <div class="lugar">Universidad Nacional Tecnológica de Lima Sur (UNTELS)</div>
+    </div>
+    <div class="item">
+      <div class="fila"><h3>Secundaria completa</h3><span class="fecha">2014 – 2018</span></div>
+      <div class="lugar">I.E. Saco Oliveros</div>
+    </div>
+
+    <h2>Habilidades técnicas</h2>
+    <dl class="habilidades">
+      <dt>BI</dt><dd>Power BI, DAX, Power Query, modelado de datos, visualización</dd>
+      <dt>Datos</dt><dd>SQL Server, MySQL, administración y consultas SQL</dd>
+      <dt>ETL</dt><dd>Extracción incremental, transformación, integración y automatización</dd>
+      <dt>Programación</dt><dd>Python, PHP, Java, JavaScript · Framework Django</dd>
+      <dt>Sistemas</dt><dd>SAP HANA Business One, SAP R3, APIs de Odoo, APIs de Metrics</dd>
+      <dt>Web</dt><dd>HTML, CSS, plataformas internas</dd>
+      <dt>Habilidades blandas</dt><dd>Adaptabilidad, independencia, integridad, liderazgo</dd>
+    </dl>
+
+    <h2>Capacitaciones y certificaciones</h2>
+    <ul class="lista">
+      <li><span style="color:var(--texto)"><b>Business Intelligence con SQL Server</b> · Centro de Capacitación y Desarrollo (CCD) · 120 h</span><span>2026</span></li>
+      <li><span style="color:var(--texto)"><b>Análisis de Datos con Microsoft Power BI</b> · Centro de Capacitación y Desarrollo (CCD) · 120 h</span><span>2026</span></li>
+      <li><span style="color:var(--texto)"><b>Análisis de Datos con Power BI e Inteligencia Artificial</b> · Centro de Capacitación y Desarrollo (CCD) · 120 h</span><span>2026</span></li>
+      <li><span style="color:var(--texto)"><b>Microsoft Excel Profesional</b> · Instituto Iberoamericano de Formación Profesional · 860 h</span><span>2024</span></li>
+      <li><span style="color:var(--texto)"><b>Power BI (básico a avanzado)</b> · Instituto Iberoamericano de Formación Profesional · 540 h</span><span>2024</span></li>
+      <li><span style="color:var(--texto)"><b>Introduction to Cybersecurity</b> · Cisco Networking Academy</span><span>2024</span></li>
+      <li><span style="color:var(--texto)"><b>Centrales telefónicas IP con Asterisk</b> · SGDS Perú · 38 h</span><span>2023</span></li>
+    </ul>
+
+    <h2>Idiomas</h2>
+    <ul>
+      <li>Español: nativo</li>
+      <li>Inglés: básico (Centro de Idiomas UNTELS)</li>
+    </ul>
+
+    <section class="anexos-seccion">
+      <h2>Anexos: certificados</h2>
+      <div class="anexos">
+        <a href="certificados/ccd-bi-sql-server.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-bi-sql-server.jpg" alt="Certificado Business Intelligence con SQL Server">BI con SQL Server · CCD</a>
+        <a href="certificados/ccd-power-bi.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-power-bi.jpg" alt="Certificado Análisis de Datos con Microsoft Power BI">Análisis de Datos con Power BI · CCD</a>
+        <a href="certificados/ccd-power-bi-ia.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-power-bi-ia.jpg" alt="Certificado Análisis de Datos con Power BI e Inteligencia Artificial">Power BI e Inteligencia Artificial · CCD</a>
+        <a href="certificados/excel-profesional.jpg" target="_blank" rel="noopener"><img src="certificados/excel-profesional.jpg" alt="Diploma Microsoft Excel Profesional">Excel Profesional · IFP</a>
+        <a href="certificados/power-bi.jpg" target="_blank" rel="noopener"><img src="certificados/power-bi.jpg" alt="Diploma Power BI">Power BI · IFP</a>
+        <a href="certificados/ciberseguridad-cisco.jpg" target="_blank" rel="noopener"><img src="certificados/ciberseguridad-cisco.jpg" alt="Certificado Introduction to Cybersecurity">Ciberseguridad · Cisco</a>
+        <a href="certificados/asterisk.jpg" target="_blank" rel="noopener"><img src="certificados/asterisk.jpg" alt="Certificado Centrales Telefónicas IP con Asterisk">Asterisk · SGDS Perú</a>
+      </div>
+    </section>
+  </div>
+</article>
+<script>
+  // Al imprimir o guardar en PDF, abre todos los desplegables para que salga el detalle completo
+  window.addEventListener("beforeprint", function () {
+    document.querySelectorAll("details").forEach(function (d) { d.open = true; });
+  });
+</script>
+</body>
+</html>

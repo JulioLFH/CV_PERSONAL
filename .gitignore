@@ -1,0 +1,4 @@
+# El Word editable y el PDF con anexos se quedan solo en la PC
+*.docx
+CV_Julio_Flores_Herrera.pdf
+~$*

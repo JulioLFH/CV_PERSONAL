@@ -87,6 +87,7 @@
   .anexos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
   .anexos a { display: grid; gap: 6px; color: var(--texto); text-decoration: none; font-size: .88rem; }
   .anexos img { width: 100%; max-width: 100%; aspect-ratio: 1404 / 992; object-fit: cover; border: 1px solid var(--borde); border-radius: 4px; background: #fff; display: block; }
+  .anexos .vertical img { object-position: top; }
   .anexos a:hover img, .anexos a:focus-visible img { outline: 2px solid var(--acento); outline-offset: 2px; }
   @media (max-width: 640px) {
     .cabecera, .contenido { padding-left: 20px; padding-right: 20px; }
@@ -292,8 +293,9 @@
     </ul>
 
     <section class="anexos-seccion">
-      <h2>Anexos: certificados</h2>
+      <h2>Anexos: grado académico y certificados</h2>
       <div class="anexos">
+        <a href="certificados/bachiller-untels.jpg" target="_blank" rel="noopener"><img src="certificados/bachiller-untels.jpg" alt="Diploma de Bachiller en Ingeniería de Sistemas, UNTELS">Bachiller en Ing. de Sistemas · UNTELS</a>
         <a href="certificados/ccd-bi-sql-server.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-bi-sql-server.jpg" alt="Certificado Business Intelligence con SQL Server">BI con SQL Server · CCD</a>
         <a href="certificados/ccd-power-bi.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-power-bi.jpg" alt="Certificado Análisis de Datos con Microsoft Power BI">Análisis de Datos con Power BI · CCD</a>
         <a href="certificados/ccd-power-bi-ia.jpg" target="_blank" rel="noopener"><img src="certificados/ccd-power-bi-ia.jpg" alt="Certificado Análisis de Datos con Power BI e Inteligencia Artificial">Power BI e Inteligencia Artificial · CCD</a>
@@ -301,6 +303,7 @@
         <a href="certificados/power-bi.jpg" target="_blank" rel="noopener"><img src="certificados/power-bi.jpg" alt="Diploma Power BI">Power BI · IFP</a>
         <a href="certificados/ciberseguridad-cisco.jpg" target="_blank" rel="noopener"><img src="certificados/ciberseguridad-cisco.jpg" alt="Certificado Introduction to Cybersecurity">Ciberseguridad · Cisco</a>
         <a href="certificados/asterisk.jpg" target="_blank" rel="noopener"><img src="certificados/asterisk.jpg" alt="Certificado Centrales Telefónicas IP con Asterisk">Asterisk · SGDS Perú</a>
+        <a class="vertical" href="certificados/ingles-untels.jpg" target="_blank" rel="noopener"><img src="certificados/ingles-untels.jpg" alt="Constancia de inglés nivel básico, Centro de Idiomas UNTELS">Inglés básico · Centro de Idiomas UNTELS</a>
       </div>
     </section>
 
